@@ -9,7 +9,7 @@ var spriteSheetLoader : createjs.SpriteSheetLoader;
 var enemyAtlas : createjs.SpriteSheet;
 
 var currentScene : objects.Scene;
-var scene: number;
+var scene: number = 0;
 
 // Preload Assets required
 var assetData:objects.Asset[] = [

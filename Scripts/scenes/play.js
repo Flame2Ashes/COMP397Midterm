@@ -9,18 +9,34 @@ var scenes;
         __extends(Play, _super);
         function Play() {
             _super.call(this);
+            this._score = 0;
             this.start();
         }
         Play.prototype.start = function () {
+            this._scoreLabel = new createjs.Text("Score: " + this._score, "30px Verdana", "#ffffff");
+            this._scoreLabel.x = config.Screen.CENTER_X;
+            this._scoreLabel.y = 20;
             this._gameBG = new createjs.Bitmap(assets.getResult("GameBG"));
             this.addChild(this._gameBG);
+            this.addChild(this._scoreLabel);
             this._enemy = new objects.Enemy("robber", (Math.random() * 5) + 1);
+            this._enemy.setPosition(new objects.Vector2(Math.random() * config.Screen.WIDTH, Math.random() * config.Screen.HEIGHT));
             this.addChild(this._enemy);
+            this._enemy.on("click", this._onEnemyClick, this);
             stage.addChild(this);
         };
         Play.prototype.update = function () {
+            if (this._enemy.life == 0) {
+                this.addChild(this._enemy);
+            }
         };
         Play.prototype._onEnemyClick = function (event) {
+            this._enemy.shot();
+            if (this._enemy.life == 0) {
+                this._poof = new objects.Poof("poof");
+                this._enemy._dead();
+                this._score += 5;
+            }
         };
         return Play;
     })(objects.Scene);

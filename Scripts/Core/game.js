@@ -6,7 +6,7 @@ var stage;
 var spriteSheetLoader;
 var enemyAtlas;
 var currentScene;
-var scene;
+var scene = 0;
 // Preload Assets required
 var assetData = [
     { id: "PlayBtn", src: "../../Assets/images/sack.png" },
