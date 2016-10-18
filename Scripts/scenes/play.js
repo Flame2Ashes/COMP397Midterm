@@ -32,6 +32,8 @@ var scenes;
             this._enemy.shot();
             console.log("enemy life: " + this._enemy.life);
             if (this._enemy.life == 0) {
+                this._score += 5;
+                this._scoreLabel.text = "Score: " + this._score;
                 this._enemy._dead();
                 this._poof = new objects.Poof("poof");
                 this._poof.setPosition(new objects.Vector2(this._enemy.x, this._enemy.y));
