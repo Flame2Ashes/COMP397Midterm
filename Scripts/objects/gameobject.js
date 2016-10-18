@@ -10,6 +10,7 @@ var objects;
         function GameObject(atlas, imageString, deathAnimString) {
             _super.call(this, enemyAtlas, imageString);
             this._initialize(imageString);
+            this._deathAnim = deathAnimString;
             this.start();
         }
         Object.defineProperty(GameObject.prototype, "width", {
@@ -63,6 +64,13 @@ var objects;
         };
         GameObject.prototype.start = function () { };
         GameObject.prototype.update = function () {
+            if (this.currentAnimationFrame == enemyAtlas.getNumFrames("poof") - 1) {
+                currentScene.removeChild(this);
+            }
+        };
+        GameObject.prototype.destroy = function () {
+            this.gotoAndPlay(this._deathAnim);
+            // currentScene.removeChild(this);
         };
         return GameObject;
     })(createjs.Sprite);

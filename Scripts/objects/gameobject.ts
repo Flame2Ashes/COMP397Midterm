@@ -5,6 +5,8 @@ module objects {
         private _name:string;
         private _position:Vector2;
 
+        private _deathAnim : string;
+
         // PUBLIC PROPERTIES
         get width() : number {
             return this._width
@@ -41,6 +43,7 @@ module objects {
         constructor(atlas: createjs.SpriteSheet, imageString : string, deathAnimString) {
             super(enemyAtlas, imageString);
             this._initialize(imageString);
+            this._deathAnim = deathAnimString;
             this.start();
         }
 
@@ -55,7 +58,16 @@ module objects {
 
         public start():void {}
         public update():void {
+
+            if(this.currentAnimationFrame == enemyAtlas.getNumFrames("poof") - 1) {
+                currentScene.removeChild(this);
+            }
            
+        }
+
+        public destroy() : void {
+            this.gotoAndPlay(this._deathAnim);
+            // currentScene.removeChild(this);
         }
     }
 }

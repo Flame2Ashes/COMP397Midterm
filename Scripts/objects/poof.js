@@ -9,6 +9,7 @@ var objects;
         __extends(Poof, _super);
         function Poof(imageString) {
             _super.call(this, enemyAtlas, imageString, "poof");
+            this._time = 0;
             this.position = new objects.Vector2(config.Screen.WIDTH, config.Screen.HEIGHT);
             this.regX = this.getBounds().width * 0.5;
             this.regY = this.getBounds().height * 0.5;
@@ -20,9 +21,17 @@ var objects;
         Poof.prototype.getPosition = function () {
             return new objects.Vector2(this.x, this.y);
         };
+        //Update ticker
+        Poof.prototype.update = function () {
+            this._time += createjs.Ticker.interval;
+            this.removePoof();
+        };
+        //Remove object after a time
         Poof.prototype.removePoof = function () {
-            if (this.currentAnimationFrame == enemyAtlas.getNumFrames("poof") - 1) {
+            if (this._time >= 400) {
+                console.log("Poof!");
                 currentScene.removeChild(this);
+                this._time = 0;
             }
         };
         return Poof;

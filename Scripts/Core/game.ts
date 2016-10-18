@@ -35,7 +35,7 @@ function init() {
     stage.enableMouseOver(20);
     createjs.Ticker.setFPS(config.Game.FPS);
     createjs.Ticker.on("tick", this.gameLoop, this);
-
+    //Create AtlasData
     let atlasData = {
         "images": [
             assets.getResult("enemy")
@@ -63,7 +63,7 @@ function init() {
 ]
 
     }
-
+    //Assign to enemyAtlas
     enemyAtlas = new createjs.SpriteSheet(atlasData);
 
     scene = config.Scene.MENU;

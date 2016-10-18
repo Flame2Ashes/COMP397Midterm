@@ -29,6 +29,7 @@ function init() {
     stage.enableMouseOver(20);
     createjs.Ticker.setFPS(config.Game.FPS);
     createjs.Ticker.on("tick", this.gameLoop, this);
+    //Create AtlasData
     var atlasData = {
         "images": [
             assets.getResult("enemy")
@@ -52,6 +53,7 @@ function init() {
             "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
         ]
     };
+    //Assign to enemyAtlas
     enemyAtlas = new createjs.SpriteSheet(atlasData);
     scene = config.Scene.MENU;
     changeScene();
