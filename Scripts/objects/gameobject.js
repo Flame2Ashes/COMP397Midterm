@@ -8,7 +8,7 @@ var objects;
     var GameObject = (function (_super) {
         __extends(GameObject, _super);
         function GameObject(atlas, imageString, deathAnimString) {
-            _super.call(this, atlas, imageString);
+            _super.call(this, enemyAtlas, imageString);
             this._initialize(imageString);
             this.start();
         }
@@ -62,7 +62,8 @@ var objects;
             this.position = new objects.Vector2(this.x, this.y);
         };
         GameObject.prototype.start = function () { };
-        GameObject.prototype.update = function () { };
+        GameObject.prototype.update = function () {
+        };
         return GameObject;
     })(createjs.Sprite);
     objects.GameObject = GameObject;

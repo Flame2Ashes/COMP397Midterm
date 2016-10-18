@@ -20,6 +20,11 @@ var objects;
         Poof.prototype.getPosition = function () {
             return new objects.Vector2(this.x, this.y);
         };
+        Poof.prototype.removePoof = function () {
+            if (this.currentAnimationFrame == enemyAtlas.getNumFrames("poof") - 1) {
+                currentScene.removeChild(this);
+            }
+        };
         return Poof;
     })(objects.GameObject);
     objects.Poof = Poof;

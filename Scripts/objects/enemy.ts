@@ -3,7 +3,7 @@ module objects {
 
         private _move : objects.Vector2;
         private _speed : number;
-
+        private _poof : objects.Poof;
         private _life : number;
 
         // public variables
@@ -25,6 +25,7 @@ module objects {
         }
 
         public update() : void {
+            super.update();
         }
 
         public setPosition(pos : objects.Vector2) : void {
@@ -41,7 +42,10 @@ module objects {
         }
 
         public _dead() : void {
-            
+            this._poof = new objects.Poof("poof");
+            this._poof.setPosition(new objects.Vector2(this.x, this.y));
+            currentScene.addChild(this._poof); //Poof animation should play
+            this._poof.removePoof();
             currentScene.removeChild(this);
         }
     }

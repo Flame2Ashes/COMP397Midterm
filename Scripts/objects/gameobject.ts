@@ -39,8 +39,7 @@ module objects {
         }
 
         constructor(atlas: createjs.SpriteSheet, imageString : string, deathAnimString) {
-            super(atlas, imageString);
-
+            super(enemyAtlas, imageString);
             this._initialize(imageString);
             this.start();
         }
@@ -55,6 +54,8 @@ module objects {
         }
 
         public start():void {}
-        public update():void {}
+        public update():void {
+           
+        }
     }
 }

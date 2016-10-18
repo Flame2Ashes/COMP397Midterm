@@ -17,5 +17,12 @@ module objects {
         public getPosition() : objects.Vector2 {
             return new objects.Vector2(this.x, this.y);
         }
+
+        public removePoof() : void {
+            
+             if (this.currentAnimationFrame == enemyAtlas.getNumFrames("poof") - 1) {
+                currentScene.removeChild(this);
+            }
+        }
     }
 }

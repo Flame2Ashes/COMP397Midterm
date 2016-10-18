@@ -52,7 +52,7 @@ function init() {
         
         "animations": {
             "poof": {
-                "frames": [4, 1, 5, 2, 3], "speed": 0.2, next: false
+                "frames": [4, 1, 5, 2, 3], "speed": 0.1, next: false
             },
 
             "robber": {frames: [0]}

@@ -22,6 +22,7 @@ var objects;
             configurable: true
         });
         Enemy.prototype.update = function () {
+            _super.prototype.update.call(this);
         };
         Enemy.prototype.setPosition = function (pos) {
             this.x = pos.x;
@@ -34,6 +35,10 @@ var objects;
             this._life--;
         };
         Enemy.prototype._dead = function () {
+            this._poof = new objects.Poof("poof");
+            this._poof.setPosition(new objects.Vector2(this.x, this.y));
+            currentScene.addChild(this._poof); //Poof animation should play
+            this._poof.removePoof();
             currentScene.removeChild(this);
         };
         return Enemy;
