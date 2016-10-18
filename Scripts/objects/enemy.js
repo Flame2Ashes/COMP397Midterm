@@ -8,8 +8,11 @@ var objects;
     var Enemy = (function (_super) {
         __extends(Enemy, _super);
         function Enemy(imageString, life) {
-            _super.call(this, enemyAtlas, imageString, "");
+            _super.call(this, enemyAtlas, imageString, "robber");
             this._life = life;
+            this.position = new objects.Vector2((Math.random() * config.Screen.WIDTH), Math.random() * config.Screen.HEIGHT);
+            this.regX = this.getBounds().width * 0.5;
+            this.regY = this.getBounds().height * 0.5;
         }
         Object.defineProperty(Enemy.prototype, "life", {
             get: function () {

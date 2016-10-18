@@ -13,8 +13,12 @@ module objects {
         public center:objects.Vector2;
 
         constructor(imageString:string, life : number) {
-            super(enemyAtlas, imageString, "");
+            super(enemyAtlas, imageString, "robber");
             this._life = life;
+
+            this.position = new objects.Vector2((Math.random() * config.Screen.WIDTH),Math.random() * config.Screen.HEIGHT);
+            this.regX = this.getBounds().width * 0.5;
+            this.regY = this.getBounds().height * 0.5;
         }
 
         get life() : number {
@@ -38,6 +42,7 @@ module objects {
         }
 
         private _dead() : void {
+            
             currentScene.removeChild(this);
         }
     }

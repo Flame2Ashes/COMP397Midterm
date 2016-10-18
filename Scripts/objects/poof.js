@@ -7,8 +7,8 @@ var objects;
 (function (objects) {
     var Poof = (function (_super) {
         __extends(Poof, _super);
-        function Poof() {
-            _super.apply(this, arguments);
+        function Poof(imageString) {
+            _super.call(this, enemyAtlas, imageString, "poof");
         }
         return Poof;
     })(objects.GameObject);

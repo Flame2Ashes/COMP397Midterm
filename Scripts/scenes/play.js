@@ -12,6 +12,10 @@ var scenes;
             this.start();
         }
         Play.prototype.start = function () {
+            this._gameBG = new createjs.Bitmap(assets.getResult("GameBG"));
+            this.addChild(this._gameBG);
+            this._enemy = new objects.Enemy("robber", (Math.random() * 5) + 1);
+            this.addChild(this._enemy);
             stage.addChild(this);
         };
         Play.prototype.update = function () {
