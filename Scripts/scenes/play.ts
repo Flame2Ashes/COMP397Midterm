@@ -1,6 +1,9 @@
 module scenes {
     export class Play extends objects.Scene {
+        //Private variables
 
+        private _gameBG : createjs.Bitmap;
+        private _scoreLabel : objects.Label;
 
         constructor() {
             super();
