@@ -22,7 +22,8 @@ module scenes {
             this.addChild(this._gameBG);
             this.addChild(this._scoreLabel);
 
-            this._enemy = new objects.Enemy("robber", (Math.random() * 5) + 1)
+            this._enemy = new objects.Enemy("robber", Math.floor((Math.random() * 5) + 1));
+            console.log("enemy life: " + this._enemy.life);
             this._enemy.setPosition(new objects.Vector2(Math.random() * config.Screen.WIDTH, Math.random() * config.Screen.HEIGHT));
             this.addChild(this._enemy);
             this._enemy.on("click", this._onEnemyClick, this);
@@ -30,17 +31,25 @@ module scenes {
         }
 
         public update() : void {
-            if (this._enemy.life == 0) {
-                this.addChild(this._enemy);
-            }
+
+            
+           
         }
 
         private _onEnemyClick(event : createjs.MouseEvent) : void {
             this._enemy.shot();
+            console.log("enemy life: " + this._enemy.life);
             if (this._enemy.life == 0) {
-                this._poof = new objects.Poof("poof");
                 this._enemy._dead();
-                this._score += 5;
+                this._poof = new objects.Poof("poof");
+                this._poof.setPosition(new objects.Vector2(this._enemy.x, this._enemy.y));
+                this.addChild(this._poof);
+                this._enemy = new objects.Enemy("robber", Math.floor(Math.random() * 5) + 1);
+                 this._enemy.setPosition(new objects.Vector2(Math.random() * config.Screen.WIDTH, Math.random() * config.Screen.HEIGHT));
+                 this._enemy.on("click", this._onEnemyClick, this);
+                 this.addChild(this._enemy);
+                
+            }
                 
             }
             
